@@ -242,8 +242,8 @@ def appdir_from_executable(exepath):
     # TODO: remove compatability hook for ESKY_APPDATA_DIR=""
     if ESKY_APPDATA_DIR and os.path.basename(appdir) == ESKY_APPDATA_DIR:
         appdir = os.path.dirname(appdir)
-        if len(appdir) == 3: # at the root of a drive
-            appdir = appdir[:2]        
+        if sys.platform == "nt" and len(appdir) == 3: # at the root of a drive
+            appdir = appdir[:2]
     return appdir
 
 
